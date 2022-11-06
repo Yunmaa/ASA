@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url(login1.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  font-family: sans-serif;
+
+}
+
+.contact {
+  width: 450px;
+  height: 400px;
+  color: beige;
+  top: 30%;
+  left: 40%;
+  position: absolute;
+  transform: translate(-10%, -15%);
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 30px 90px;
+}
+
+.logo i {
+  height: 50px;
+  width: 50px;
+  background: transparent;
+  border: 2px solid cyan;
+  color: cyan;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.logo i:hover {
+  color: antiquewhite;
+  transition: .3s;
+  border: 2px solid transparent;
+}
+
+header {
+  padding: 20px 0 50px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1{
+  margin: 0;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 40px;
+
+
+}
+
+.contact h1 {
+  margin: 0;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.contact input {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+
+
+}
+
+.contact input[type = "text"], input[type = "password"]
+{
+  border: none;
+  border-bottom: 2px solid #fff;
+  background: transparent;
+  color: aliceblue;
+  outline: none;
+  height: 20px;
+  font-size: 16px;
+
+}
+
+.contact input[type = "submit"]
+{
+  border: none;
+  outline: none;
+  height: 25px;
+  width: 250px;
+  color: antiquewhite;
+  background: transparent;
+  font-size: 15px;
+  border-radius: 10px;
+}
+
+.contact input[type = "submit"]:hover
+{
+  cursor: pointer;
+  background: #fff;
+  color: #000;
+  font-weight: bold;
+}
+
+.contact a {
+  text-decoration: underline;
+  font-size: 15px;
+  line-height: 40px;
+  color: rgba(255, 228, 196, 0.551);
+}
+
+.contact a:hover {
+  color: burlywood;
+}

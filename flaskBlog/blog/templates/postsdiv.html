@@ -1,0 +1,88 @@
+{% extends 'main.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{url_for('static', filename='createpost.css')}}">
+<br>
+<h1 align="center" ><span>{% block header %}Posts{% endblock %}</span></h1>
+<div id="posts">
+{% for post in posts %}
+    <div class="card border-dark">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <a href="/posts/{{post.user.username}}">{{post.user.username}}</a>
+            <div>
+                {{post.likes|length}}
+                {% if user.id in post.likes|map(attribute='author')|list %}
+                <!--the above line will create a list of all the authors of the likes-->
+                <a href="/like-post/{{post.id}}"><i class="fa-solid fa-thumbs-up"></i></a>
+                {% else %}
+                <a href="/like-post/{{post.id}}"><i class="fa-regular fa-thumbs-up"></i></a>
+                {% endif %}
+
+                {% if user.id == post.author %}
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown"></button>
+                <ul class="dropdown-menu">
+                    <li><a href="/delete-post/{{post.id}}" class="dropdown-item">Delete Post</a></li>
+                    <!--<li><a href="/share-post/{{post.id}}" class="dropdown-item">Share</a></li>-->
+                    <li><a href="/editpost/{{post.id}}" class="dropdown-item">Edit</a></li>
+                </ul>
+            </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="card-text">{{post.text}}</div>
+            <br>
+            <div class="collapse" id="comments-{{post.id}}">
+                <div class="card">
+                    <div class="card-body" id="comments-expanded-{{post.id}}">
+                        {% for comment in post.comments %}
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <a href="/posts/{{comment.user.username}}">{{comment.user.username}}</a>: {{comment.text}}
+                            </div>
+                            <div>
+                                <small class="text-muted"> {{comment.date_created}} </small>
+                                {% if user.id == comment.author or user.id == post.author %}
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown"></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/delete-comment/{{comment.id}}" class="dropdown-item">Delete Comment</a></li>
+                                        <!--<li><a href="/edit-post/{{post.id}}" class="dropdown-item">Edit</a></li>-->
+                                    </ul>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <!--            to get the length of a list in Jinja, use 'length'-->
+            <p class="card-text">
+            {% if post.comments|length > 0 %}
+            <a data-bs-toggle="collapse" href="#comments-{{post.id}}" role="button">
+                <small> View {{post.comments|length}} Comment(s) </small>
+            </a>
+            {% else %}
+            <small class="text-muted">No comments yet</small>
+            {% endif %}
+            </p>
+            <form class="input-group mb-5" method="POST" action="/create-comment/{{post.id}}">
+                <input type="text" id="text" name="text" class="form-control" placeholder="Say something! 😎"/>
+                <button type="submit" class="btn btn-secondary">Comment</button>
+            </form>
+        </div>
+        <div class="card-footer text-muted">{{post.date_created}}</div>
+    </div>
+    <br />
+{% endfor %}
+</div>
+<!--{% block footer %}-->
+<!--    <div align="center">-->
+<!--        <a href="/createpost">-->
+<!--            <button type="button" class="btn btn-primary btn-lg">Create a Post</button>-->
+<!--        </a>-->
+<!--    </div>-->
+<!--{% endblock %}-->
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'main.html'%}
+
+{% block content %}
+<br><br>
+<body style="background-color: LightGray">
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+{% for category, message in messages %}
+{% if category == 'error' %}
+<div class="alert alert-danger alert-dismissible" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% else %}
+<div class="alert alert-success alert-dismissible" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}
+</body>
+
+{% if name %}
+<link rel="stylesheet" href="{{url_for('static', filename='designA.css')}}">
+
+<body>
+    <section class="june">
+        <div class="home">
+
+            <div class="bracket">
+                <div class="june-text">
+                    <h3>Hey, {{name}}!</h3>
+                    <h1>It's <span>June!</span> here</h1>
+                    <p>Welcome to my blog!
+                        So a bit about me, I am Ngozi Okoroafor, with initials that give the cool acronym, June.
+                        I am a bit outgoing (when I'm not feeling lazy), dedicated, and I like to believe
+                        I'm open-minded (yet to be disputed). I am currently looking for new career opportunities and more depth my current job
+                        position cannot provide me with, hence my taking up this Diploma course.</p>
+<!--                    <p>I started this course to learn python, </p>-->
+                    <div class="social">
+                        <a href="https://twitter.com/Icouldbejuben"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/yunmaa_/"><i class="fa-brands fa-instagram-square"></i></a>
+                        <a href="https://www.linkedin.com/in/ngozi-okoroafor"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://medium.com/@iamjuben"><i class="fa-brands fa-medium"></i></a>
+                        <a href="https://github.com/Yunmaa"><i class="fa-brands fa-github"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+
+                    <button type="button">Extra Info 😎!</button>
+
+                    <h1>Education</h1>
+                    <h3>Federal University of Technology Owerri</h3>
+                    <p> Bachelor's Degree in Electrical and Electronic Engineering</p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+</body>
+
+{% else %}
+<h1>What can I call you?🙂</h1>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{form.name.label(class='form-label')}}
+    {{form.name(class='form-control')}}
+    <br/>
+    {{form.submit(class='btn btn-secondary')}}
+</form>
+{% endif %}
+{% endblock %}

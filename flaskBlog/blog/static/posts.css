@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url(login1.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    font-family: sans-serif;
+
+}
+
+span {
+    color: white;
+}
+
+.login {
+    width: 350px;
+    height: 400px;
+    /*background-color: #fff;*/
+    color: beige;
+    top: 30%;
+    left: 40%;
+    position: absolute;
+    transform: translate(-10%, -15%);
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 30px 90px;
+}
+
+header {
+    padding: 20px 0 50px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 40px;
+
+
+}
+
+.login h1 {
+    /*background-color: rgba(169, 169, 169, 0.604);
+    border-radius: 5px;*/
+    margin: 0;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.login input {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+
+
+}
+
+.login input[type = "text"], input[type = "password"]
+{
+    border: none;
+    border-bottom: 2px solid #fff;
+    background: transparent;
+    color: aliceblue;
+    outline: none;
+    height: 20px;
+    font-size: 16px;
+
+}
+
+.login input[type = "submit"]
+{
+    border: none;
+    outline: none;
+    height: 25px;
+    width: fit-content;
+    color: antiquewhite;
+    background: rgba(0, 0, 0, 0.579);
+    font-size: 15px;
+    border-radius: 10px;
+
+}
+
+.login input[type = "submit"]:hover
+{
+    cursor: pointer;
+    background: #fff;
+    color: #000;
+    font-weight: bold;
+}
+
+.login a {
+    text-decoration: underline;
+    font-size: 15px;
+    line-height: 40px;
+    color: rgba(255, 228, 196, 0.551);
+}
+
+.login a:hover {
+    color: burlywood;
+
+
+
+}

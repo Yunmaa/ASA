@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="{{url_for('static', filename='designR.css')}}">
+
+<div class="register">
+
+    <h1>Register</h1>
+    <form method="post">
+        <p><label for='first_name'></label></p>
+        <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+
+        <p><label for='last_name'> </label></p>
+        <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+
+        <p><label for='email'> </label></p>
+        <input type="text" id="email" name="email" placeholder="Enter Email"/>
+
+        <p><label for='username'></label></p>
+        <input type="text" id="username" name="username" placeholder="Enter Username"/>
+
+        <p><label for='password1'> </label></p>
+        <input type="password" id="password1" name="password1" placeholder="Enter Password"/>
+
+         <p><label for='password2'> </label></p>
+        <input type="password" id="password2" name="password2" placeholder="Confirm Password"/>
+
+        <input type="submit" name="" value="Register">
+
+    </form>
+
+</div>
+{% endblock %}
